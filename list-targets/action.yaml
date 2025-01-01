@@ -18,7 +18,7 @@ outputs:
 runs:
   using: composite
   steps:
-    - uses: suzuki-shunsuke/tfaction/install@main
+    - uses: Taiki130/tfaction/install@feature/test-for-terragrunt
       id: install
     - run: github-comment exec -- ci-info run | sed "s/^export //" >> "$GITHUB_ENV"
       shell: bash
@@ -41,7 +41,7 @@ runs:
       env:
         HEAD_SHA: ${{github.event.pull_request.head.sha}}
 
-    - uses: suzuki-shunsuke/tfaction/list-working-dirs@main
+    - uses: Taiki130/tfaction/list-working-dirs@feature/test-for-terragrunt
       id: list-working-directory-configs
     - uses: Taiki130/tfaction/js@feature/test-for-terragrunt
       id: global-config

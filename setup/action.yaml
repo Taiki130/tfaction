@@ -23,7 +23,7 @@ outputs:
 runs:
   using: composite
   steps:
-    - uses: suzuki-shunsuke/tfaction/install@main
+    - uses: Taiki130/tfaction/install@feature/test-for-terragrunt
       id: install
     - run: github-comment exec -- ci-info run | sed "s/^export //" >> "$GITHUB_ENV"
       shell: bash
@@ -127,7 +127,7 @@ runs:
     - uses: google-github-actions/setup-gcloud@6189d56e4096ee891640bb02ac264be376592d6a # v2.1.2
       if: steps.target-config.outputs.gcp_service_account != ''
 
-    - uses: suzuki-shunsuke/tfaction/deploy-ssh-key@main
+    - uses: Taiki130/tfaction/deploy-ssh-key@feature/test-for-terragrunt
       if: inputs.ssh_key != ''
       with:
         ssh_key: ${{ inputs.ssh_key }}
