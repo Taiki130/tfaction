@@ -48,7 +48,7 @@ export const main = async () => {
           .execSync(`terragrunt render-json --terragrunt-json-out /dev/stdout --terragrunt-working-dir ${tfDir}`)
           .toString("utf-8"),
       );
-      const source = Object.values(tgInspection["terraform"]["source"])
+      const source = tgInspection.terraform?.source;
       if (source.startsWith("./") || source.startsWith("../")) {
         rawModuleCalls[tfDir].push(source.replace("//", "/"))
       } else {
