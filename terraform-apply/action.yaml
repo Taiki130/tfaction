@@ -21,15 +21,15 @@ outputs:
 runs:
   using: composite
   steps:
-    - uses: suzuki-shunsuke/tfaction/js@main
+    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
       id: target-config
       with:
         action: get-target-config
-    - uses: suzuki-shunsuke/tfaction/js@main
+    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
       id: global-config
       with:
         action: get-global-config
-    - uses: suzuki-shunsuke/tfaction/js@main
+    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
       id: check-terraform-skip
       with:
         action: check-terraform-skip

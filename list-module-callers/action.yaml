@@ -21,7 +21,7 @@ runs:
     - run: |
         echo '::warning::This action was deprecated. Please use suzuki-shunsuke/tfaction/js action.'
       shell: bash
-    - uses: suzuki-shunsuke/tfaction/js@main
+    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
       id: main
       with:
         action: list-module-callers

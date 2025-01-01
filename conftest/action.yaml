@@ -18,7 +18,7 @@ runs:
     - run: echo "value=$GITHUB_ACTION_PATH" >> "$GITHUB_OUTPUT"
       shell: bash
       id: action_path
-    - uses: suzuki-shunsuke/tfaction/js@main
+    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
       id: main
       with:
         action: conftest
