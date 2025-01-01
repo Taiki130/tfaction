@@ -27,3 +27,4 @@ runs:
         action: list-module-callers
         config_files: ${{inputs.config_files}}
         module_files: ${{inputs.module_files}}
+        terraform_command: ${{ inputs.terraform_command }}

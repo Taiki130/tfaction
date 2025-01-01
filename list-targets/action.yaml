@@ -54,6 +54,7 @@ runs:
         action: list-module-callers
         config_files: ${{ steps.list-working-directory-configs.outputs.file }}
         module_files: ${{ steps.list-working-directory-configs.outputs.module_file }}
+        terraform_command: ${{ steps.global-config.outputs.terraform_command }}
     - uses: suzuki-shunsuke/tfaction/js@main
       id: list-targets
       with:
