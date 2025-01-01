@@ -18,7 +18,7 @@ runs:
 
     # TODO Run conftest on modules
     # https://github.com/suzuki-shunsuke/tfaction/issues/1908#issuecomment-2415572321
-    # - uses: ./conftest
+    # - uses: suzuki-shunsuke/tfaction/conftest@main
     #   with:
     #     github_token: ${{ inputs.github_token }}
 
@@ -55,7 +55,7 @@ runs:
       shell: bash
       working-directory: ${{ env.TFACTION_TARGET }}
 
-    - uses: ./terraform-docs
+    - uses: suzuki-shunsuke/tfaction/terraform-docs@main
       if: steps.target-config.outputs.destroy != 'true'
       with:
         github_token: ${{ inputs.github_token }}
