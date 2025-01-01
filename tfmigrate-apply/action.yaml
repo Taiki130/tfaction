@@ -12,11 +12,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
+    - uses: Taiki130/tfaction/js@feature/test-for-terragrunt
       id: global-config
       with:
         action: get-global-config
-    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
+    - uses: Taiki130/tfaction/js@feature/test-for-terragrunt
       id: target-config
       with:
         action: get-target-config

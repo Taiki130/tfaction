@@ -23,7 +23,7 @@ runs:
       shell: bash
       if: env.TFACTION_MODULE_PATH == ''
 
-    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
+    - uses: Taiki130/tfaction/js@feature/test-for-terragrunt
       id: global-config
       with:
         action: get-global-config
