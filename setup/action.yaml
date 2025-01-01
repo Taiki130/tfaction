@@ -46,7 +46,7 @@ runs:
       env:
         HEAD_SHA: ${{github.event.pull_request.head.sha}}
 
-    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
+    - uses: Taiki130/tfaction/js@feature/feature/test-for-terragrunt
       id: target-config
       with:
         action: get-target-config
@@ -62,7 +62,7 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
 
-    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
+    - uses: Taiki130/tfaction/js@feature/feature/test-for-terragrunt
       id: global-config
       with:
         action: get-global-config
@@ -99,7 +99,7 @@ runs:
         role-session-name: ${{ steps.target-config.outputs.aws_role_session_name }}
         aws-region: ${{ steps.target-config.outputs.aws_region }}
 
-    - uses: Taiki130/tfaction/js@feature/detect-local-module-changed-for-terragrunt
+    - uses: Taiki130/tfaction/js@feature/feature/test-for-terragrunt
       with:
         action: export-aws-secrets-manager
 
