@@ -65652,10 +65652,8 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             }
         });
         if (fs.existsSync(tfDir + "/terragrunt.hcl")) {
-            const tgOutputFile = path.join(tfDir, "terragrunt_output.json");
-            child_process.execSync(`terragrunt render-json --terragrunt-json-out ${tgOutputFile} --terragrunt-working-dir ${tfDir}`);
-            const tgInspection = JSON.parse(fs.readFileSync(tgOutputFile, "utf8"));
-            fs.unlinkSync(tgOutputFile);
+            child_process.execSync(`terragrunt render-json --terragrunt-working-dir ${tfDir}`);
+            const tgInspection = JSON.parse(fs.readFileSync(tfDir + "terragrunt_rendered.json", "utf8"));
             core.info(`tgInspection: ${JSON.stringify(tgInspection)}`);
             const source = (_a = tgInspection.terraform) === null || _a === void 0 ? void 0 : _a.source;
             if (source.startsWith("./") || source.startsWith("../")) {
