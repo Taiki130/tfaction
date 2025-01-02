@@ -25,13 +25,13 @@ inputs:
   config:
     description: "config file path"
     required: false
-  terraform_command:
-    description: "terraform command"
-    required: false
 
   # list-module-callers
   module_files:
     description: "module file paths"
+    required: false
+  terraform_command:
+    description: "terraform command"
     required: false
 
   # list-targets-with-changed-files

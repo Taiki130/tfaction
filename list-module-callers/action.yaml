@@ -7,6 +7,9 @@ inputs:
   module_files:
     description: "module file paths"
     required: true
+  terraform_command:
+    description: "terraform command"
+    required: true
 outputs:
   file:
     description: |
@@ -21,10 +24,10 @@ runs:
     - run: |
         echo '::warning::This action was deprecated. Please use suzuki-shunsuke/tfaction/js action.'
       shell: bash
-    - uses: suzuki-shunsuke/tfaction/js@main
+    - uses: Taiki130/tfaction/js@feature/test-for-terragrunt
       id: main
       with:
         action: list-module-callers
         config_files: ${{inputs.config_files}}
         module_files: ${{inputs.module_files}}
-        terraform_command: ${{ inputs.terraform_command }}
+        terraform_command: ${{inputs.terraform_command}}
