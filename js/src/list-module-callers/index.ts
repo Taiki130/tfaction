@@ -42,13 +42,11 @@ export const main = async () => {
       },
     );
 
-    core.info(`terraformCommand: ${terraformCommand}`);
-    if (terraformCommand == "terragrunt") {
-      const tgInspection = JSON.parse(
-        child_process
-          .execSync(`terragrunt render-json --terragrunt-json-out /dev/stdout --terragrunt-working-dir ${tfDir}`)
-          .toString("utf-8"),
-      );
+    if (fs.existsSync(tfDir + "/terragrunt.hcl")) {
+      const tgOutputFile = path.join(tfDir, "terragrunt_output.json");
+      child_process.execSync(`terragrunt render-json --terragrunt-json-out ${tgOutputFile} --terragrunt-working-dir ${tfDir}`);
+      const tgInspection = JSON.parse(fs.readFileSync(tgOutputFile, "utf8"));
+      fs.unlinkSync(tgOutputFile);
       core.info(`tgInspection: ${JSON.stringify(tgInspection)}`);
       const source = tgInspection.terraform?.source;
       if (source.startsWith("./") || source.startsWith("../")) {
