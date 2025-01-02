@@ -65651,11 +65651,12 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
                 return [];
             }
         });
-        console.log(terraformCommand);
+        core.info(`terraformCommand: ${terraformCommand}`);
         if (terraformCommand == "terragrunt") {
             const tgInspection = JSON.parse(child_process
                 .execSync(`terragrunt render-json --terragrunt-json-out /dev/stdout --terragrunt-working-dir ${tfDir}`)
                 .toString("utf-8"));
+            core.info(`tgInspection: ${JSON.stringify(tgInspection)}`);
             const source = (_a = tgInspection.terraform) === null || _a === void 0 ? void 0 : _a.source;
             if (source.startsWith("./") || source.startsWith("../")) {
                 rawModuleCalls[tfDir].push(source.replace("//", "/"));
@@ -65663,7 +65664,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             else {
                 return;
             }
-            console.log(rawModuleCalls[tfDir]);
+            core.info(`rawModuleCalls: ${JSON.stringify(rawModuleCalls)}`);
         }
         ;
     });

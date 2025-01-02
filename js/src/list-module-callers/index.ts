@@ -42,20 +42,21 @@ export const main = async () => {
       },
     );
 
-    console.log(terraformCommand);
+    core.info(`terraformCommand: ${terraformCommand}`);
     if (terraformCommand == "terragrunt") {
       const tgInspection = JSON.parse(
         child_process
           .execSync(`terragrunt render-json --terragrunt-json-out /dev/stdout --terragrunt-working-dir ${tfDir}`)
           .toString("utf-8"),
       );
+      core.info(`tgInspection: ${JSON.stringify(tgInspection)}`);
       const source = tgInspection.terraform?.source;
       if (source.startsWith("./") || source.startsWith("../")) {
         rawModuleCalls[tfDir].push(source.replace("//", "/"))
       } else {
         return;
       }
-      console.log(rawModuleCalls[tfDir]);
+      core.info(`rawModuleCalls: ${JSON.stringify(rawModuleCalls)}`);
     };
   });
 
