@@ -65651,6 +65651,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
                 return [];
             }
         });
+        console.log(terraformCommand);
         if (terraformCommand == "terragrunt") {
             const tgInspection = JSON.parse(child_process
                 .execSync(`terragrunt render-json --terragrunt-json-out /dev/stdout --terragrunt-working-dir ${tfDir}`)
@@ -65662,6 +65663,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             else {
                 return;
             }
+            console.log(rawModuleCalls[tfDir]);
         }
         ;
     });

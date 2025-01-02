@@ -42,6 +42,7 @@ export const main = async () => {
       },
     );
 
+    console.log(terraformCommand);
     if (terraformCommand == "terragrunt") {
       const tgInspection = JSON.parse(
         child_process
@@ -54,6 +55,7 @@ export const main = async () => {
       } else {
         return;
       }
+      console.log(rawModuleCalls[tfDir]);
     };
   });
 
