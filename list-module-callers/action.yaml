@@ -7,6 +7,9 @@ inputs:
   module_files:
     description: "module file paths"
     required: true
+  terraform_command:
+    description: "terraform command"
+    required: true
 outputs:
   file:
     description: |
@@ -27,4 +30,4 @@ runs:
         action: list-module-callers
         config_files: ${{inputs.config_files}}
         module_files: ${{inputs.module_files}}
-        terraform_command: ${{ inputs.terraform_command }}
+        terraform_command: ${{inputs.terraform_command}}
